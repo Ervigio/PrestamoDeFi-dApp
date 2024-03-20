@@ -1,5 +1,11 @@
+import { AppLayout } from "./components/ui/layaouts";
+
 function App() {
-  return <h1 className="text-3xl font-bold underline bg bg-red-200">Hello world!</h1>;
+  return (
+    <AppLayout>
+      <h1 className="bg-green-400 flex justify-between font-bold">Hello world!!!</h1>
+    </AppLayout>
+  );
 }
 
 export default App;
