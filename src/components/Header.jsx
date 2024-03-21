@@ -1,3 +1,5 @@
+import {Navbar} from "../components/Navbar"
+
 export default function Header() {
   return (
     <header className="bg-cyan-300 py-2 px-3 flex justify-between items-center border-b shadow">
@@ -14,6 +16,7 @@ export default function Header() {
         alt="blockmaker-desktop-logo"
       />
       <button className="bg-gray-100 rounded px-2 text-sm h-fit ">Connect Wallet</button>
+      <Navbar className="bg-orange-500"/>
     </header>
   );
 }
