@@ -1,4 +1,4 @@
-import{ Footer, Header} from "../../index";
+import { Footer, Header } from "../../../components";
 import { PropTypes } from "prop-types";
 
 export default function AppLayout({ children }) {
@@ -11,7 +11,6 @@ export default function AppLayout({ children }) {
   );
 }
 
-AppLayout.propTypes ={
-    children: PropTypes.node.isRequired
-}
-
+AppLayout.propTypes = {
+  children: PropTypes.node.isRequired,
+};
