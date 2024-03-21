@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
-import InicioYAutenticacion from "../../pages/Pagina1/InicioYAutenticacion";
-import GestionDeUsuarios from "../../pages/Pagina2/GestionDeUsuarios";
-import OperacioneDePrestamos from "../../pages/Pagina3/OperacioneDePrestamos";
+import InicioYAutenticacion from "../../../pages/Pagina1/InicioYAutenticacion";
+import GestionDeUsuarios from "../../../pages/Pagina2/GestionDeUsuarios";
+import OperacioneDePrestamos from "../../../pages/Pagina3/OperacioneDePrestamos";
 import { Home } from "../../pages/subpage1";
 
 export default function Rutas() {
