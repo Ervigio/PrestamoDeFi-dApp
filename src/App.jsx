@@ -1,10 +1,14 @@
 import { AppLayout } from "./components/ui/layaouts";
-import { Home } from "./pages/Pagina1/Home";
+import { InicioYAutenticacion } from "./pages/Pagina1";
+import { GestionDeUsuarios } from "./pages/Pagina2";
+import { OperacioneDePrestamos } from "../src/pages/Pagina3";
 
 function App() {
   return (
     <AppLayout>
-      <Home />
+      <InicioYAutenticacion />
+      <GestionDeUsuarios />
+      <OperacioneDePrestamos />
     </AppLayout>
   );
 }
