@@ -5,13 +5,13 @@ export default function Navbar() {
     <nav>
       <ul>
         <li>
-          <Link to="/Pagina1">Página1</Link>
+          <Link to="/src/pages/Pagina1/">Inicio y Autenticación</Link>
         </li>
         <li>
-          <Link to="/Pagina2">Página2</Link>
+          <Link to="/src/pages/Pagina2">Gestión de Usuarios</Link>
         </li>
         <li>
-          <Link to="/Pagina3">Página3</Link>
+          <Link to="/src/pages/Pagina3">Operaciones de Préstamos</Link>
         </li>
       </ul>
     </nav>
