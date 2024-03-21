@@ -1,9 +1,10 @@
 import { AppLayout } from "./components/ui/layaouts";
+import { Home } from "./pages/Pagina1/Home";
 
 function App() {
   return (
     <AppLayout>
-      <h1 className="bg-green-400 flex justify-between font-bold">Hello world!!!</h1>
+      <Home />
     </AppLayout>
   );
 }
