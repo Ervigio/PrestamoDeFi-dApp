@@ -1,14 +1,20 @@
 import { AppLayout } from "./components/ui/layaouts";
-import { InicioYAutenticacion } from "./pages/Pagina1";
-import { GestionDeUsuarios } from "./pages/Pagina2";
-import { OperacioneDePrestamos } from "../src/pages/Pagina3";
+import {
+  InicioYAutenticacion,
+  GestionDeUsuarios,
+  OperacioneDePrestamos,
+} from "./pages";
+
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <AppLayout>
-      <InicioYAutenticacion />
-      <GestionDeUsuarios />
-      <OperacioneDePrestamos />
+      <Routes>
+        <Route path="/" element={<InicioYAutenticacion />} />
+        <Route path="/usuarios" element={<GestionDeUsuarios />} />
+        <Route path="/prestamos" element={<OperacioneDePrestamos />} />
+      </Routes>
     </AppLayout>
   );
 }

@@ -6,13 +6,13 @@ export default function Header() {
       <img
         className="sm:hidden"
         width={47}
-        src="/public/blockmaker-small-logo.png"
+        src="/blockmaker-small-logo.png"
         alt="blockmaker-mobile-logo"
       />
       <img
         className="hidden sm:block"
         width={300}
-        src="/public/blockmaker-logo.png"
+        src="/blockmaker-logo.png"
         alt="blockmaker-desktop-logo"
       />
       <Navbar />
