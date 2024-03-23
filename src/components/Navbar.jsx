@@ -4,28 +4,31 @@ export default function Navbar() {
   return (
     <nav>
       <ul className="flex ">
-        <li className="px-4 ">
+        <li className="p-1">
           <Link to="/" className="hidden md:block">
-            Inicio y Autenticación
+            <button className="border-r px-2">Inicio y Autenticación</button>
           </Link>
           <Link to="/" className="md:hidden">
-            Inicio
+            <button className="border-r px-2">Inicio</button>
           </Link>
         </li>
-        <li className="px-4  ">
+
+        <li className="p-1">
           <Link to="/usuarios" className="hidden md:block">
-            Gestión de Usuarios
+            <button className="border-r px-2 ">Gestión de Usuarios</button>
           </Link>
           <Link to="/usuarios" className="md:hidden">
-            Usuarios
+            <button className="border-r px-2 ">Usuarios</button>
           </Link>
         </li>
-        <li className="px-4 ">
+
+        <li className="p-1">
           <Link to="/prestamos" className="hidden md:block">
-            Operaciones de Préstamos
+            <button className="px-2 ">Operaciones de Préstamos</button>
           </Link>
+
           <Link to="/prestamos" className="md:hidden">
-            Préstamos
+            <button className="px-2 ">Préstamos</button>
           </Link>
         </li>
       </ul>
