@@ -2,7 +2,7 @@ import { Navbar } from "../components";
 
 export default function Header() {
   return (
-    <header className="bg-gradient-to-r from-orange-400 to-pink-500 py-2 px-3 flex justify-between items-center border-b shadow ">
+    <header className="bg-gradient-to-r from-emerald-700 to-cyan-200 py-2 px-3 flex justify-between items-center border-b shadow-md">
       <img
         className="sm:hidden"
         width={47}
@@ -20,7 +20,6 @@ export default function Header() {
       <button className="bg-gray-100 rounded px-2 text-sm h-fit ">
         Connect Wallet
       </button>
-      
     </header>
   );
 }
