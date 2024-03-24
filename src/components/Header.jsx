@@ -1,4 +1,5 @@
 import { Navbar } from "../components";
+import { ConnectKitButton } from "connectkit";
 
 export default function Header() {
   return (
@@ -16,10 +17,7 @@ export default function Header() {
         alt="blockmaker-desktop-logo"
       />
       <Navbar />
-
-      <button className="bg-gray-100 rounded px-2 text-sm h-fit ">
-        Connect Wallet
-      </button>
+      <ConnectKitButton showBalance />
     </header>
   );
 }
