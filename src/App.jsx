@@ -10,8 +10,8 @@ function App() {
     <WagmiConfig config={config}>
       <ConnectKitProvider mode="auto">
         <AppLayout>
+          <InicioYAutenticacion/>
           <Rutas />
-          <InicioYAutenticacion />
         </AppLayout>
       </ConnectKitProvider>
     </WagmiConfig>
