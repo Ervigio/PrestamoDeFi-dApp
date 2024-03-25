@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import {
   InicioYAutenticacion,
   GestionDeUsuarios,
-  OperacioneDePrestamos,
+  OperacionesDePrestamos,
 } from "../../../pages";
 import { Home } from "./../../../pages";
 
@@ -12,7 +12,7 @@ export default function Rutas() {
       <Route index element={<Home />} />
       <Route path="/" element={<InicioYAutenticacion />} />
       <Route path="usuarios" element={<GestionDeUsuarios />} />
-      <Route path="prestamos" element={<OperacioneDePrestamos />} />
+      <Route path="prestamos" element={<OperacionesDePrestamos />} />
     </Routes>
   );
 }
