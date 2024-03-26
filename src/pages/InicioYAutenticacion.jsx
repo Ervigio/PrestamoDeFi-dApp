@@ -3,8 +3,9 @@ import { useAccount } from "wagmi";
 
 export default function InicioYAutenticacion() {
   const { address, isConnecting, isDisconnected } = useAccount();
-
-  <Home />;
+  <section>
+    <Home />;
+  </section>;
 
   if (isConnecting)
     return (
