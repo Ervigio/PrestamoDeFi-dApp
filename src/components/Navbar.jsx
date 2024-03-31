@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <nav className="hidden sm:block">
-      <ul className="flex ">
+    <nav >
+      <ul className="flex justify-center">
         <li className="p-1">
           <Link to="/" className="hidden lg:block">
             <button className="border-r px-2">Inicio y Autenticación</button>
