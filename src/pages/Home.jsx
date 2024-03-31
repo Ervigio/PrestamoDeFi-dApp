@@ -1,11 +1,7 @@
 import {
-  LoadingSpinner,
-  Button,
-  ErrorInfo,
-  TextInput,
+
   Title,
 } from "../components/ui";
-import { Navbar } from "../components";
 
 export default function Home() {
   return (
@@ -16,7 +12,7 @@ export default function Home() {
       <hr />
 
       <section className="flex flex-col gap-16 items-center">
-        <div className="grid gap-3 px-5 bg-white p-4 border shadow rounded-lg w-72 sm:min-w-[60vw]">
+        <div className="grid gap-3 px-5 bg-white p-4 border shadow rounded-lg w-72 sm:min-w-[40vw]">
           <div>
             <div>
               <Title>Finanzas Descentralizadas</Title>
@@ -36,7 +32,7 @@ export default function Home() {
 
 
       <section className="flex flex-col gap-16 items-center">
-        <div className="grid gap-3 px-5 bg-white p-4 border shadow rounded-lg text-sm w-72 sm:min-w-[60vw]">
+        <div className="grid gap-3 px-5 bg-white p-4 border shadow rounded-lg text-sm w-72 sm:min-w-[40vw]">
           <div>
             <div>
               <Title>Al margen de la Banca Tradicional. Banca para todos.</Title>
@@ -55,7 +51,7 @@ export default function Home() {
       </section>
 
       <section className="flex flex-col gap-16 items-center">
-        <div className="grid gap-3 px-5 bg-white p-4 border shadow rounded-lg text-sm w-72 sm:min-w-[60vw]">
+        <div className="grid gap-3 px-5 bg-white p-4 border shadow rounded-lg text-sm w-72 sm:min-w-[40vw]">
           <div>
             <div>
               <Title>Tecnología Blokchain.  </Title>
