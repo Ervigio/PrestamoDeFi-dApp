@@ -1,23 +1,22 @@
 import { Title, TextInput, Button } from "./ui";
 import { prestamoDeFiABI } from "../contracts/ABIs";
-
 import { useContractWrite, usePrepareContractWrite } from "wagmi";
 import { useState } from "react";
 
 export default function AltaPrestamista() {
-  const [nuevoPrestamistaAddres, setNuevoPrestamistaAddres] = useState("");
+  const [address, setAddress] = useState("");
 
   const { config } = usePrepareContractWrite({
     address: import.meta.env.VITE_TOKEN_CONTRACT_ADDRESS,
     abi: prestamoDeFiABI,
     functionName: "altaPrestamista",
-    args: [nuevoPrestamistaAddres],
+    args: [address],
   });
 
-  const { data, isLoading, isSuccess, write } = useContractWrite(config);
+  const { data, write } = useContractWrite(config);
 
-  const handleNuevoPrestamistaAddressInputChange = (event) => {
-    setNuevoPrestamistaAddres(event.target.value);
+  const handleAddressInputChange = (event) => {
+    setAddress(event.target.value);
   };
 
   return (
@@ -25,10 +24,9 @@ export default function AltaPrestamista() {
       <Title>Alta Prestamista</Title>
       <form action="">
         <TextInput
-          label="Address"
+          label="address"
           placeholder="Address Nuevo Empleado Prestamista 0x..."
-          type="string"
-          onChange={handleNuevoPrestamistaAddressInputChange}
+          onChange={handleAddressInputChange}
         />
       </form>
       <Button onClick={() => write?.()}>Alta Prestamista</Button>
