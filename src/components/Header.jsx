@@ -16,7 +16,10 @@ export default function Header() {
         src="/ERVPrestamoDefi.png"
         alt="blockmaker-desktop-logo"
       />
+      <div className="hidden sm:block">
       <Navbar />
+      </div>
+      
       <ConnectKitButton showBalance />
     </header>
   );
