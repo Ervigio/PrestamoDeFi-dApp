@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
 
 export default function AltaCliente() {
-  const [address, setAddress] = useState(" ");
+  const [address, setAddress] = useState("");
 
   const { config } = usePrepareContractWrite({
     address: import.meta.env.VITE_TOKEN_CONTRACT_ADDRESS,
@@ -37,7 +37,7 @@ export default function AltaCliente() {
   useEffect(() => {
     if (isTransactionSuccess) {
       toast.success("La transacción se ha completado con éxito");
-      setAddress(" ");
+      setAddress("");
     }
     if (isTransactionError) {
       toast.error("La transacción se ha fallado");
