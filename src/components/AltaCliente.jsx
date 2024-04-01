@@ -36,7 +36,7 @@ export default function AltaCliente() {
 
   useEffect(() => {
     if (isTransactionSuccess) {
-      toast.success("La transacción se ha completado con éxito");
+      toast.success("Cliente dado de alta con éxito");
       setAddress("");
     }
     if (isTransactionError) {
@@ -61,7 +61,7 @@ export default function AltaCliente() {
         isLoading={isTransactionLoading}
       >
         {isTransactionLoading
-          ? "Gestionando Alta Nuevo Cliente"
+          ? "Tramitando Alta Nuevo Cliente"
           : "Alta Cliente"}
       </Button>
     </section>
