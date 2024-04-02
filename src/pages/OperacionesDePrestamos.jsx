@@ -1,4 +1,10 @@
-import { SolicitarPrestamo } from "../components";
+import {
+  SolicitarPrestamo,
+  ReembolsarPrestamo,
+  PrestamosClientes,
+  AprobarPrestamo,
+  LiquidarGarantia,
+} from "../components";
 
 export default function OperacionesDePrestamos() {
   return (
@@ -8,7 +14,7 @@ export default function OperacionesDePrestamos() {
         <hr />
       </div>
 
-      <div className="flex justify-evenly h-[85vh]">
+      <div className="flex justify-center gap-14 h-[85vh]">
         {/*Clientes*/}
         <div>
           <section className="grid gap-10 place-items-center">
@@ -17,11 +23,7 @@ export default function OperacionesDePrestamos() {
             </div>
 
             <div className="grid gap-3 px-5 bg-white p-4 border shadow rounded-lg text-sm w-fit">
-              <p>Componente Reembolsar Préstamo</p>
-            </div>
-
-            <div className="grid gap-3 px-5 bg-white p-4 border shadow rounded-lg text-sm w-fit">
-              <p>Componente Préstamos Clientes</p>
+              <ReembolsarPrestamo />
             </div>
           </section>
         </div>
@@ -30,14 +32,14 @@ export default function OperacionesDePrestamos() {
         <div>
           <section className="grid gap-10 items-center">
             <div className="grid gap-3 px-5 bg-white p-4 border shadow rounded-lg text-sm w-fit">
-              <p>Componente Aprobar Préstamo</p>
+              <AprobarPrestamo />
             </div>
 
             <div className="grid gap-3 px-5 bg-white p-4 border shadow rounded-lg text-sm w-fit">
-              <p>Componente Liquidar Garantía</p>
+              <LiquidarGarantia />
             </div>
             <div className="grid gap-3 px-5 bg-white p-4 border shadow rounded-lg text-sm w-fit">
-              <p>Componente Préstamos Clientes</p>
+              <PrestamosClientes />
             </div>
           </section>
         </div>
