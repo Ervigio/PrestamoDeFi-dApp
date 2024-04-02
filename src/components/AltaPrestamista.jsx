@@ -1,6 +1,7 @@
 import { Title, TextInput, Button } from "./ui";
 import { prestamoDeFiABI } from "../contracts/ABIs";
 import {
+  useAccount,
   useContractWrite,
   usePrepareContractWrite,
   useWaitForTransaction,
@@ -9,17 +10,21 @@ import { useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
 
 export default function AltaPrestamista() {
-  const [address, setAddress] = useState("");
+  const [lenderAddress, setLenderAddress] = useState("");
+
+  const { address } = useAccount();
 
   const { config } = usePrepareContractWrite({
     address: import.meta.env.VITE_TOKEN_CONTRACT_ADDRESS,
     abi: prestamoDeFiABI,
     functionName: "altaPrestamista",
-    enabled: address,
-    args: [address],
+    enabled: lenderAddress,
+    args: [lenderAddress],
   });
 
   const { data, write } = useContractWrite(config);
+
+  const isMainPartner = address === data;
 
   const {
     isLoading: isTransactionLoading,
@@ -29,14 +34,14 @@ export default function AltaPrestamista() {
     hash: data?.hash,
   });
 
-  const handleAddressInputChange = (event) => {
-    setAddress(event.target.value);
+  const handleLenderAddressInputChange = (event) => {
+    setLenderAddress(event.target.value);
   };
 
   useEffect(() => {
     if (isTransactionSuccess) {
       toast.success("Prestamista dado de alta con éxito");
-      setAddress("");
+      setLenderAddress("");
     }
     if (isTransactionError) {
       toast.error(
@@ -50,20 +55,24 @@ export default function AltaPrestamista() {
       <Title>Alta Prestamista</Title>
       <form action="">
         <TextInput
-          label="address"
+          type="text"
           placeholder="Address Nuevo Empleado Prestamista 0x..."
-          onChange={handleAddressInputChange}
-          value={address}
+          label="lenderAddress"
+          value={lenderAddress}
+          disabled={!isMainPartner || isTransactionLoading}
+          onChange={handleLenderAddressInputChange}
         />
       </form>
       <Button
-        onClick={() => write?.()}
-        disabled={!address || isTransactionLoading}
+        disabled={!isMainPartner || !lenderAddress || isTransactionLoading}
         isLoading={isTransactionLoading}
+        onClick={() => write?.()}
       >
-        {isTransactionLoading
-          ? "Tramitando Alta Nuevo Prestamista"
-          : "Alta Prestamista"}
+        {isMainPartner
+          ? isTransactionLoading
+            ? "Tramitando Alta Nuevo Prestamista"
+            : "Alta Prestamista"
+          : "Operación reservada al Socio Principal"}
       </Button>
     </section>
   );
