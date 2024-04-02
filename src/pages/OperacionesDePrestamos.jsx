@@ -1,3 +1,5 @@
+import { SolicitarPrestamo } from "../components";
+
 export default function OperacionesDePrestamos() {
   return (
     <div>
@@ -6,38 +8,39 @@ export default function OperacionesDePrestamos() {
         <hr />
       </div>
 
-      <div className="flex justify-evenly">
+      <div className="flex justify-evenly h-[85vh]">
         {/*Clientes*/}
+        <div>
+          <section className="grid gap-10 place-items-center">
+            <div className="grid gap-3 px-5 bg-white p-4 border shadow rounded-lg text-sm w-fit">
+              <SolicitarPrestamo />
+            </div>
 
-        <section className="grid gap-10 items-center">
-          <div>
-            
-            <p>Componente Solicitar Préstamo</p>
-          </div>
+            <div className="grid gap-3 px-5 bg-white p-4 border shadow rounded-lg text-sm w-fit">
+              <p>Componente Reembolsar Préstamo</p>
+            </div>
 
-          <div>
-            <p>Componente Reembolsar Préstamo</p>
-          </div>
-
-          <div>
-            <p>Componente Préstamos Clientes</p>
-          </div>
-        </section>
+            <div className="grid gap-3 px-5 bg-white p-4 border shadow rounded-lg text-sm w-fit">
+              <p>Componente Préstamos Clientes</p>
+            </div>
+          </section>
+        </div>
 
         {/*EmpleadoPrestamista*/}
+        <div>
+          <section className="grid gap-10 items-center">
+            <div className="grid gap-3 px-5 bg-white p-4 border shadow rounded-lg text-sm w-fit">
+              <p>Componente Aprobar Préstamo</p>
+            </div>
 
-        <section className="grid gap-10 items-center">
-          <div>
-            <p>Componente Aprobar Préstamo</p>
-          </div>
-
-          <div>
-            <p>Componente Liquidar Garantía</p>
-          </div>
-          <div>
-            <p>Componente Préstamos Clientes</p>
-          </div>
-        </section>
+            <div className="grid gap-3 px-5 bg-white p-4 border shadow rounded-lg text-sm w-fit">
+              <p>Componente Liquidar Garantía</p>
+            </div>
+            <div className="grid gap-3 px-5 bg-white p-4 border shadow rounded-lg text-sm w-fit">
+              <p>Componente Préstamos Clientes</p>
+            </div>
+          </section>
+        </div>
       </div>
     </div>
   );
