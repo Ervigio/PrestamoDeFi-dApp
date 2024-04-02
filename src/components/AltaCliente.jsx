@@ -1,6 +1,7 @@
 import { Title, TextInput, Button } from "./ui";
 import { prestamoDeFiABI } from "../contracts/ABIs";
 import {
+  useAccount,
   useContractWrite,
   usePrepareContractWrite,
   useWaitForTransaction,
@@ -9,17 +10,21 @@ import { useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
 
 export default function AltaCliente() {
-  const [address, setAddress] = useState("");
+  const [clientAddress, setClientAddress] = useState("");
+
+  const { address } = useAccount();
 
   const { config } = usePrepareContractWrite({
     address: import.meta.env.VITE_TOKEN_CONTRACT_ADDRESS,
     abi: prestamoDeFiABI,
     functionName: "altaCliente",
-    enabled: address,
-    args: [address],
+    enabled: clientAddress,
+    args: [clientAddress],
   });
 
   const { data, write } = useContractWrite(config);
+
+  const isLenderEmployee = address === data;
 
   const {
     isLoading: isTransactionLoading,
@@ -29,15 +34,14 @@ export default function AltaCliente() {
     hash: data?.hash,
   });
 
-  // Para recoger el valor del input en la sección Alta Cliente
-  const handleAddressInputChange = (event) => {
-    setAddress(event.target.value);
+  const handleClientAddressInputChange = (event) => {
+    setClientAddress(event.target.value);
   };
 
   useEffect(() => {
     if (isTransactionSuccess) {
       toast.success("Cliente dado de alta con éxito");
-      setAddress("");
+      setClientAddress("");
     }
     if (isTransactionError) {
       toast.error("La transacción se ha fallado");
@@ -49,20 +53,26 @@ export default function AltaCliente() {
       <Title>Alta Cliente</Title>
       <form action="">
         <TextInput
-          label="address"
+          type="text"
           placeholder="Address Nuevo Cliente 0x..."
-          onChange={handleAddressInputChange}
-          value={address}
+          label="clientAddress"
+          value={clientAddress}
+          disabled={!isLenderEmployee || isTransactionLoading}
+          onChange={handleClientAddressInputChange}
         />
       </form>
       <Button
-        onClick={() => write?.()}
-        disabled={!address || isTransactionLoading}
+        disabled={
+          !clientAddress || !isLenderEmployee || isTransactionLoading
+        }
         isLoading={isTransactionLoading}
+        onClick={() => write?.()}
       >
-        {isTransactionLoading
-          ? "Tramitando Alta Nuevo Cliente"
-          : "Alta Cliente"}
+        {isLenderEmployee
+          ? isTransactionLoading
+            ? "Tramitando Alta Nuevo Cliente"
+            : "Alta Cliente"
+          : "Operación reservada a los Empleados Prestamistas"}
       </Button>
     </section>
   );
