@@ -4,7 +4,7 @@ import { Title, TextInput, Button } from "./ui";
 export default function LiquidarGarantia() {
   return (
     <section className="grid gap-3">
-      <Title>Liquidar Garantia</Title>
+      <Title>Liquidar Garantía</Title>
 
       <form className="grid gap-1 border-2 rounded-lg">
         <div className="grid gap-3 p-2">
@@ -18,7 +18,7 @@ export default function LiquidarGarantia() {
           />
         </div>
         <div className="grid p-2">
-          <Button>Liquidar Garantia</Button>
+          <Button>Liquidar Garantía</Button>
         </div>
       </form>
     </section>

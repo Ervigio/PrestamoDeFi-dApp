@@ -3,7 +3,7 @@ import { Title, TextInput, Button } from "./ui";
 export default function ReembolsarPrestamo() {
   return (
     <section className="grid gap-3">
-      <Title>Reembolsar Péstamo</Title>
+      <Title>Reembolsar Préstamo</Title>
 
       <form className="grid gap-3">
         <div className="grid gap-3 border-2 rounded-lg p-2">
