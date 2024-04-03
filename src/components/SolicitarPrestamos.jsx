@@ -7,18 +7,16 @@ import {
 } from "wagmi";
 import { useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
-import { parseEther } from "viem/utils";
 
-export default function SolicitarPrestamo() {
-  const [saldoGarantia, setSaldoGarantia] = useState("");
+export default function SolicitarPrestamos() {
   const [monto, setMonto] = useState("");
   const [plazoDevolucion, setPlazoDevolucion] = useState("");
 
   const { config } = usePrepareContractWrite({
     address: import.meta.env.VITE_TOKEN_CONTRACT_ADDRESS,
     abi: prestamoDeFiABI,
-    functionName: "depositarGarantia",
-    args: [saldoGarantia, parseEther(monto), plazoDevolucion],
+    functionName: "solicitarPrestamos",
+    args: [BigInt(monto * 10 ** 18), plazoDevolucion]
   });
 
   const { data, write } = useContractWrite(config);
@@ -31,26 +29,13 @@ export default function SolicitarPrestamo() {
     hash: data?.hash,
   });
 
-  const handleSaldoGarantiaInputChange = (event) => {
-    setSaldoGarantia(event.target.value);
-  };
-  const handleMonto = (event) => {
-    console.log("Weis", parseEther(monto));
+  const handleMontoInputChange = (event) => {
+    console.log("Monto en Weis", BigInt(monto * 10 ** 18));
     setMonto(event.target.value);
   };
-  const handlePlazoDevolucion = (event) => {
+  const handlePlazoDevolucionInputChange = (event) => {
     setPlazoDevolucion(event.target.value);
   };
-
-  useEffect(() => {
-    if (isTransactionSuccess) {
-      toast.success("La transacción se ha ejecutado correctamente");
-      setSaldoGarantia("");
-    }
-    if (isTransactionError) {
-      toast.error("La transacción ha fallado");
-    }
-  }, [isTransactionSuccess, isTransactionError]);
 
   useEffect(() => {
     if (isTransactionSuccess) {
@@ -65,30 +50,7 @@ export default function SolicitarPrestamo() {
 
   return (
     <section className="grid gap-3">
-      <Title>Solicitar Préstamo</Title>
-
-      <form className="grid gap-1 border-2 rounded-lg">
-        <div className="grid gap-3 p-2">
-          <TextInput
-            type="number"
-            placeholder="Paso 1: Deposita Garantía (100% Préstamo Solicitado)"
-            label="saldoGarantia"
-            value={saldoGarantia}
-            onChange={handleSaldoGarantiaInputChange}
-          />
-        </div>
-        <div className="grid p-2">
-          <Button
-            disabled={!saldoGarantia || isTransactionLoading}
-            isLoading={isTransactionLoading}
-            onClick={() => write?.()}
-          >
-            {isTransactionLoading
-              ? "Ejecutando transacción"
-              : "Depositar Saldo Garantía"}
-          </Button>
-        </div>
-      </form>
+      {/*<Title>Solicitar Préstamo</Title>*/}
 
       <form className="grid gap-1 border-2 rounded-lg">
         <div className="grid gap-3 p-2">
@@ -97,7 +59,7 @@ export default function SolicitarPrestamo() {
             placeholder="Paso 2: Indica Monto en Ether que se Solicita"
             label="monto"
             value={monto}
-            onChange={handleMonto}
+            onChange={handleMontoInputChange}
           />
           <p>{monto}</p>
           <TextInput
@@ -105,7 +67,7 @@ export default function SolicitarPrestamo() {
             placeholder="Paso 3: Indica Plazo de Devolución (días NATURALES)"
             label="plazoDevolucion"
             value={plazoDevolucion}
-            onChange={handlePlazoDevolucion}
+            onChange={handlePlazoDevolucionInputChange}
           />
         </div>
         <div className="grid p-2">
