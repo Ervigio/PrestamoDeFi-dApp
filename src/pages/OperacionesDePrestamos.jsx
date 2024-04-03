@@ -1,5 +1,7 @@
+import { Title } from "../components/ui";
 import {
-  SolicitarPrestamo,
+  DepositarGarantia,
+  SolicitarPrestamos,
   ReembolsarPrestamo,
   PrestamosClientes,
   AprobarPrestamo,
@@ -19,9 +21,17 @@ export default function OperacionesDePrestamos() {
         <div>
           <section className="grid gap-10 place-items-center">
             <div className="grid gap-3 px-5 bg-white p-4 border shadow rounded-lg text-sm w-fit">
-              <SolicitarPrestamo />
+              <div className="pb-3">
+                <Title>Solicitar Préstamo</Title>
+                <p className="pt-3 pb-2">Paso 1: Deposita el Saldo Garantía</p>
+                <DepositarGarantia />                
+              </div>
+              <hr />              
+              <div>
+                <p className="pt-1 pb-2">Paso 2: Detalla tu solicitud</p>
+                <SolicitarPrestamos />
+              </div>
             </div>
-
             <div className="grid gap-3 px-5 bg-white p-4 border shadow rounded-lg text-sm w-fit">
               <ReembolsarPrestamo />
             </div>
