@@ -2,6 +2,7 @@ import { Title, TextInput, Button } from "./ui";
 import { prestamoDeFiABI } from "../contracts/ABIs";
 import {
   useAccount,
+  useContractRead,
   useContractWrite,
   usePrepareContractWrite,
   useWaitForTransaction,
@@ -14,6 +15,14 @@ export default function AltaCliente() {
 
   const { address } = useAccount();
 
+  const { data } = useContractRead({
+    address: import.meta.env.VITE_TOKEN_CONTRACT_ADDRESS,
+    abi: prestamoDeFiABI,
+    functionName: "altaCliente",
+  });
+
+  const isLenderEmployee = address === data;
+
   const { config } = usePrepareContractWrite({
     address: import.meta.env.VITE_TOKEN_CONTRACT_ADDRESS,
     abi: prestamoDeFiABI,
@@ -22,16 +31,14 @@ export default function AltaCliente() {
     args: [clientAddress],
   });
 
-  const { data, write } = useContractWrite(config);
-
-  const isLenderEmployee = address === data;
+  const { data: writeData, write } = useContractWrite(config);
 
   const {
     isLoading: isTransactionLoading,
     isSuccess: isTransactionSuccess,
     isError: isTransactionError,
   } = useWaitForTransaction({
-    hash: data?.hash,
+    hash: writeData?.hash,
   });
 
   const handleClientAddressInputChange = (event) => {
@@ -62,9 +69,7 @@ export default function AltaCliente() {
         />
       </form>
       <Button
-        disabled={
-          !clientAddress || !isLenderEmployee || isTransactionLoading
-        }
+        disabled={!clientAddress || !isLenderEmployee || isTransactionLoading}
         isLoading={isTransactionLoading}
         onClick={() => write?.()}
       >
