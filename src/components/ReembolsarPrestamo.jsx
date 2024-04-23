@@ -1,8 +1,8 @@
 import { Title, TextInput, Button } from "./ui";
 import { prestamoDeFiABI } from "../contracts/ABIs";
 import {
-  useContractWrite,
   usePrepareContractWrite,
+  useContractWrite,  
   useWaitForTransaction,
 } from "wagmi";
 import { useEffect, useState } from "react";
