@@ -2,7 +2,7 @@ import { Title, TextInput, Button } from "./ui";
 import { prestamoDeFiABI } from "../contracts/ABIs";
 import {
   usePrepareContractWrite,
-  useContractWrite,  
+  useContractWrite,
   useWaitForTransaction,
 } from "wagmi";
 import { useEffect, useState } from "react";
@@ -56,7 +56,7 @@ export default function ReembolsarPrestamo() {
           />
           <Button
             onClick={() => write?.()}
-            disabled={isTransactionLoading}
+            disabled={!id || isTransactionLoading}
             isLoading={isTransactionLoading}
           >
             {isTransactionLoading
